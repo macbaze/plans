@@ -49,23 +49,35 @@ function render_plans($plans) {	//создаёт размеку для тари�
 				<a href="<?=$plan_group->link;?>">узнать подробнее на сайте www.sknt.ru</a>
 			</label>
 		</template>
-		<template v-if="currentStep==1 && currentGroup==<?=$plan_group_key?>">
+		<template v-if="currentStep && currentGroup==<?=$plan_group_key?>">
 		<?php
 		foreach ($plan_group->tarifs as $plan_ind => $plan) :
 			$month_price = $plan->price / $plan->pay_period;?>
-			<input type="radio" name="plan_step1" id="plan_<?=$plan_ind;?>" value="<?=$plan->ID;?>">
-			<label for="plan_<?=$plan_ind;?>" class="step1">
-				<h1><?=$plan->pay_period.' месяц'.right_month_ending($plan->pay_period);?></h1>
+			<template v-if="currentStep==1">
+				<input type="radio" name="plan_step1" id="plan_<?=$plan_ind;?>" value="<?=$plan->ID;?>" v-on:click="openPlan">
+				<label for="plan_<?=$plan_ind;?>" class="step1">
+					<h1><?=$plan->pay_period.' месяц'.right_month_ending($plan->pay_period);?></h1>
+					<div>
+						<span class="price"><?=$month_price;?> &#x20bd;/мес</span>
+						<span class="total_price">разовый платёж &#8211; <?=$plan->price;?> &#x20bd;</span>
+						<?php if ($highest_price > $month_price) :?>
+							<span class="discount">скидка &#8211; <?=(($highest_price * $plan->pay_period) - $plan->price);?> &#x20bd;</span>
+						<?php endif;?>
+					</div>
+				</label>
+			</template>
+			<label class="step2" v-if="currentStep==2 && currentPlan==<?=$plan->ID;?>">
+				<h1>Тариф "<?=$plan_group->title;?>"</h1>
 				<div>
-					<span class="price"><?=$month_price;?> &#x20bd;/мес</span>
-					<span class="total_price">разовый платёж &#8211; <?=$plan->price;?> &#x20bd;</span>
-					<?php if ($highest_price > $month_price) :?>
-						<span class="discount">скидка &#8211; <?=(($highest_price * $plan->pay_period) - $plan->price);?> &#x20bd;</span>
-					<?php endif;?>
+					<span class="price">Период оплаты &#8211; <?=$plan->pay_period.' месяц'.right_month_ending($plan->pay_period).'<br>'.$month_price;?> &#x20bd;/мес</span>
+					<span class="total_price">разовый платёж &#8211; <?=$plan->price;?> &#x20bd;
+						<br>со счёта спишется &#8211; <?=$plan->price;?> &#x20bd;</span>
+					<span class="dates">вступит в силу &#8211; сегодня
+						<br>активно до &#8211; 21.10.2017</span>
 				</div>
 			</label>
-		<?php endforeach;
-		echo '</template>';
-	endforeach;
+		<?php endforeach;?>
+		</template>
+	<?php endforeach;
 }
 ?>

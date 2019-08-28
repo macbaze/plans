@@ -37,8 +37,9 @@ body {
     flex-direction: row;
     height: 65pt;
     position: relative;
-    background-color: #fff;
+    background-color: #f7f7f8;
     border-bottom: 1pt solid #a7a7aa;
+    margin-bottom: 20pt;
 }
 .plans header h1 {
 	color: #000;
@@ -79,15 +80,13 @@ body {
     border-bottom-style: solid;
 }
 
-label.step0,
-label.step1 {
+label {
 	background-color: #fff;
     border: 1pt #c8c7cc;
     border-top-style: solid;
     border-bottom-style: solid;
 }
-.step0 h1,
-.step1 h1 {
+label h1 {
     color: #82c12b;
     line-height: 1;
     font-weight: bold;
@@ -96,8 +95,7 @@ label.step1 {
     padding: 20pt 0;
     border-bottom: 1pt solid #c8c7cc;
 }
-.step0 > div,
-.step1 > div {
+label > div {
 	display: flex;
 	flex-direction: column;
 	position: relative;
@@ -120,8 +118,7 @@ label.step1 {
     width: 10pt;
     height: 10pt;
 }
-.step0 span,
-.step1 span {
+label span {
 	display: block;
 	padding: 10pt 10pt 10pt 25pt;
 	margin-right: auto;
@@ -169,6 +166,16 @@ span.discount {
 }
 .step1 span:last-of-type {
 	padding-bottom: 10pt;
+}
+
+.step2 .price {
+	font-weight: bold;
+	padding-top: 3pt;
+	padding-bottom: 13pt;
+}
+span.dates {
+	font-size: 85%;
+	color: #aaa;
 }
 
 @media (min-width: 540pt) {
