@@ -26,10 +26,12 @@ body {
     width: 1px;
 }
 .plans main {
+	display: flex; /*ie11 fallback*/
+	flex-direction: column;
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-template-rows: auto;
-	grid-gap: 16pt;;
+	grid-gap: 16pt;
 }
 
 .plans header {
@@ -98,7 +100,8 @@ label h1 {
     border-bottom: 1pt solid #c8c7cc;
 }
 label > div {
-	flex: 1 1 100%;
+	flex: 1 1 auto;
+	height: 100%;
 	display: flex;
 	flex-direction: column;
 	position: relative;
