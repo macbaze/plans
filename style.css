@@ -31,13 +31,62 @@ body {
 	grid-template-rows: auto;
     grid-gap: 30pt;
 }
-.plans label.step0 {
+
+.plans header {
+    display: flex;
+    flex-direction: row;
+    height: 65pt;
+    position: relative;
+    background-color: #fff;
+    border-bottom: 1pt solid #a7a7aa;
+}
+.plans header h1 {
+	color: #000;
+    font-size: 26pt;
+    margin: auto;
+    width: 100%;
+    text-align: center;
+}
+.plans header button {
+	display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background: none;
+    border: none;
+    height: 100%;
+    width: 60pt;
+    margin: 0;
+    padding: 0;
+}
+.plans header button:before {
+	content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 20pt;
+    height: 20pt;
+    transform: rotate(45deg);
+    display: block;
+    color: #82c12b;
+    border: 5pt;
+    border-left-style: solid;
+    border-bottom-style: solid;
+}
+
+label.step0,
+label.step1 {
 	background-color: #fff;
     border: 1pt #c8c7cc;
     border-top-style: solid;
     border-bottom-style: solid;
 }
-.plans label.step0 h1 {
+.step0 h1,
+.step1 h1 {
     color: #82c12b;
     line-height: 1;
     font-weight: bold;
@@ -46,13 +95,15 @@ body {
     padding: 20pt 0;
     border-bottom: 1pt solid #c8c7cc;
 }
-.plans label.step0 > div {
+.step0 > div,
+.step1 > div {
 	display: flex;
 	flex-direction: column;
 	position: relative;
 	padding-top: 10pt;
 }
-.plans label.step0 > div:after {
+.step0 > div:after,
+.step1 > div:after {
 	content: '';
 	border: 2pt #c7c7cc;
 	border-bottom-style: solid;
@@ -67,43 +118,55 @@ body {
     width: 10pt;
     height: 10pt;
 }
-.plans span {
+.step0 span,
+.step1 span {
 	display: block;
 	padding: 10pt 10pt 10pt 25pt;
 	margin-right: auto;
 }
-.plans span.speed {
+.speed {
     font-weight: bold;
 }
 
-.plans span.speed[forcolor^="Земля"] {
+.speed[forcolor^="Земля"] {
 	color: #fff;
 	background-color: #70603e;
 }
-.plans span.speed[forcolor^="Вода"] {
+.speed[forcolor^="Вода"] {
 	color: #fff;
 	background-color: #0075d9;
 }
-.plans span.speed[forcolor^="Огонь"] {
+.speed[forcolor^="Огонь"] {
 	color: #fff;
 	background-color: #e74807;
 }
-.plans span.price {
+.price {
     font-size: 110%;
 }
-.plans span:last-of-type {
+.step1 .price {
+	font-weight: bold;
+}
+.total_price,
+.discount {
+	font-size: 90%;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+.step0 span:last-of-type {
     padding-left: 0;
     margin-right: 0;
     margin-left: 25pt;
     border-bottom: 1pt solid #c8c7cc;
 }
-.plans a {
+.step0 a {
 	color: #007aff;
     display: block;
     text-decoration: none;
     padding: 20pt;
     font-size: 95%;
 }
+
+
 @media (min-width: 540pt) {
 	.plans {
 	}

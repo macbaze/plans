@@ -3,8 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-	<script src="selector.js" defer></script>-->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="selector.js" defer></script>
 	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 	<link href="style.css" rel="stylesheet">
 	<title>Тарифы</title>
