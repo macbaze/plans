@@ -1,0 +1,110 @@
+@charset "utf-8"
+div, span, label {
+	box-sizing: border-box;
+}
+html, body {
+	width:100%;
+	height:100%;
+	margin: 0;
+	padding: 0;
+	min-width: 245pt;
+}
+body {
+	color: #4d575d;
+	background-color: #efeff4;
+	font-family: 'Roboto';
+	font-size: 24pt;
+}
+.plans input[type="radio"] {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute !important;
+    white-space: nowrap;
+    width: 1px;
+}
+.plans {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: auto;
+    grid-gap: 30pt;
+}
+.plans label.step0 {
+	background-color: #fff;
+    border: 1pt #c8c7cc;
+    border-top-style: solid;
+    border-bottom-style: solid;
+}
+.plans label.step0 h1 {
+    color: #82c12b;
+    line-height: 1;
+    font-weight: bold;
+    font-size: 100%;
+    margin: 0 0 0 25pt;
+    padding: 20pt 0;
+    border-bottom: 1pt solid #c8c7cc;
+}
+.plans label.step0 > div {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	padding-top: 10pt;
+}
+.plans label.step0 > div:after {
+	content: '';
+	border: 2pt #c7c7cc;
+	border-bottom-style: solid;
+	border-right-style: solid;
+	transform: rotate(-45deg);
+	display: block;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+    right: 25pt;
+    width: 10pt;
+    height: 10pt;
+}
+.plans span {
+	display: block;
+	padding: 10pt 10pt 10pt 25pt;
+	margin-right: auto;
+}
+.plans span.speed {
+    font-weight: bold;
+}
+
+.plans span.speed[forcolor^="Земля"] {
+	color: #fff;
+	background-color: #70603e;
+}
+.plans span.speed[forcolor^="Вода"] {
+	color: #fff;
+	background-color: #0075d9;
+}
+.plans span.speed[forcolor^="Огонь"] {
+	color: #fff;
+	background-color: #e74807;
+}
+.plans span.price {
+    font-size: 110%;
+}
+.plans span:last-of-type {
+    padding-left: 0;
+    margin-right: 0;
+    margin-left: 25pt;
+    border-bottom: 1pt solid #c8c7cc;
+}
+.plans a {
+	color: #007aff;
+    display: block;
+    text-decoration: none;
+    padding: 20pt;
+    font-size: 95%;
+}
+@media (min-width: 540pt) {
+	.plans {
+	}
+}
