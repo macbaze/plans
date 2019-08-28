@@ -1,19 +1,19 @@
-@charset "utf-8"
-div, span, label {
-	box-sizing: border-box;
+@charset "utf-8";
+*, *:before, *:after {
+  box-sizing: border-box;
 }
 html, body {
 	width:100%;
 	height:100%;
 	margin: 0;
 	padding: 0;
-	min-width: 245pt;
+	min-width: 200pt;
 }
 body {
 	color: #4d575d;
 	background-color: #efeff4;
 	font-family: 'Roboto';
-	font-size: 24pt;
+	font-size: 14pt;
 }
 .plans input[type="radio"] {
     border: 0;
@@ -25,25 +25,25 @@ body {
     white-space: nowrap;
     width: 1px;
 }
-.plans {
+.plans main {
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-template-rows: auto;
-    grid-gap: 30pt;
+	grid-gap: 16pt;;
 }
 
 .plans header {
     display: flex;
     flex-direction: row;
-    height: 65pt;
+    height: 30pt;
     position: relative;
     background-color: #f7f7f8;
     border-bottom: 1pt solid #a7a7aa;
-    margin-bottom: 20pt;
+    margin-bottom: 25pt;
 }
 .plans header h1 {
 	color: #000;
-    font-size: 26pt;
+    font-size: 12pt;
     margin: auto;
     width: 100%;
     text-align: center;
@@ -58,7 +58,7 @@ body {
     background: none;
     border: none;
     height: 100%;
-    width: 60pt;
+    width: 30pt;
     margin: 0;
     padding: 0;
 }
@@ -70,17 +70,19 @@ body {
     left: 0;
     right: 0;
     margin: auto;
-    width: 20pt;
-    height: 20pt;
+    width: 10pt;
+    height: 10pt;
     transform: rotate(45deg);
     display: block;
     color: #82c12b;
-    border: 5pt;
+    border: 2pt;
     border-left-style: solid;
     border-bottom-style: solid;
 }
 
 label {
+	display: flex;
+    flex-direction: column;
 	background-color: #fff;
     border: 1pt #c8c7cc;
     border-top-style: solid;
@@ -91,21 +93,29 @@ label h1 {
     line-height: 1;
     font-weight: bold;
     font-size: 100%;
-    margin: 0 0 0 25pt;
-    padding: 20pt 0;
+    margin: 0 0 0 12pt;
+    padding: 8pt 0;
     border-bottom: 1pt solid #c8c7cc;
 }
 label > div {
+	flex: 1 1 100%;
 	display: flex;
 	flex-direction: column;
 	position: relative;
-	padding-top: 10pt;
+	font-size: 85%;
 	overflow: hidden;
+}
+label.step2 {
+	border-bottom: none;
+}
+.step0 > div,
+.step2 > div {
+	padding-top: 5pt;
 }
 .step0 > div:after,
 .step1 > div:after {
 	content: '';
-	border: 2pt #c7c7cc;
+	border: 1.5pt #c7c7cc;
 	border-bottom-style: solid;
 	border-right-style: solid;
 	transform: rotate(-45deg);
@@ -114,13 +124,13 @@ label > div {
 	top: 0;
 	bottom: 0;
 	margin: auto;
-    right: 25pt;
-    width: 10pt;
-    height: 10pt;
+    right: 10pt;
+    width: 6pt;
+    height: 6pt;
 }
 label span {
 	display: block;
-	padding: 10pt 10pt 10pt 25pt;
+	padding: 5pt 10pt 5pt 12pt;
 	margin-right: auto;
 }
 .speed {
@@ -140,20 +150,25 @@ label span {
 	background-color: #e74807;
 }
 .price {
-    font-size: 110%;
 }
-.step0 span:last-of-type {
+.free_options {
+	font-size: 90%;
+    line-height: 1.1;
+}
+.step0 span:last-of-type,
+.step2 span:last-of-type {
+	height: 100%;
     padding-left: 0;
     margin-right: 0;
-    margin-left: 25pt;
+    margin-left: 12pt;
     border-bottom: 1pt solid #c8c7cc;
 }
 .step0 a {
 	color: #007aff;
     display: block;
     text-decoration: none;
-    padding: 20pt;
-    font-size: 95%;
+	padding: 9pt 9pt 9pt 12pt;
+    font-size: 80%;
 }
 .step1 .price {
 	font-weight: bold;
@@ -167,18 +182,56 @@ span.discount {
 .step1 span:last-of-type {
 	padding-bottom: 10pt;
 }
-
 .step2 .price {
 	font-weight: bold;
-	padding-top: 3pt;
-	padding-bottom: 13pt;
+	padding-top: 2pt;
+	padding-bottom: 5pt;
 }
 span.dates {
 	font-size: 85%;
 	color: #aaa;
 }
+.button_wrapper {
+    background-color: #fff;
+    padding: 8pt 10pt;
+    border: 1pt solid #c8c7cc;
+    border-top: none;
+}
+.button_wrapper button {
+	background: #82c12b;
+	height: 30pt;
+	width: 100%;
+	color: #fff;
+	border: none;
+	font-weight: bold;
+}
 
-@media (min-width: 540pt) {
-	.plans {
+@media (min-width: 640px) {
+	.plans main {
+		margin: 5pt;
+		grid-template-columns: 1fr 1fr;
+	}
+	label {
+		border-style: solid;
+	}
+	label.step2 {
+		grid-column: span 2;
+		margin: 0 auto -5pt;
+		max-width: 280pt;
+		width: 100%;
+	}
+	.button_wrapper {
+		max-width: 280pt;
+		margin: auto;
+	}
+}
+@media (min-width: 1024px) {
+	.plans main {
+		margin: 10pt;
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+	label.step2 {
+		grid-column: span 3;
+		margin: 0 auto -10pt;
 	}
 }

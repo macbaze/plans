@@ -15,10 +15,16 @@ var app = new Vue({
     openPlan: function (event) {
             this.currentPlan = event.target.value;
             this.currentStep = 2;
+
         },
     goBack: function (event) {
     	if (this.currentStep > 0)
     		this.currentStep--;
-    }
+    	},
+    choosePlan: function (event) {
+    	document.forms.plan_selector.elements.chosenPlan.value = this.currentPlan;
+    	alert('ID выбранного тарифа содержится в переменной \'chosenPlan\' формы \'plan_selector\'. ID = '
+    		+document.forms.plan_selector.elements.chosenPlan.value);
+    	}
   }
 })

@@ -13,13 +13,6 @@ function right_month_ending($period) { //возвращает правильно
 	return 'ев';
 }
 function render_plans($plans) {	//создаёт размеку для тарифов
-	?>
-	<header v-if="currentStep">
-		<button v-on:click="goBack"></button>
-		<h1 v-if="currentStep==1">{{currentHeaderText}}</h1>
-		<h1 v-if="currentStep==2">Выбор тарифа</h1>
-	</header>
-	<?php
 	foreach ($plans as $plan_group_key => $plan_group):
 		$lowest_price = 0;
 		$highest_price = 0;
@@ -32,7 +25,7 @@ function render_plans($plans) {	//создаёт размеку для тари�
 		$price_string = "{$lowest_price} &#8211; {$highest_price} &#x20bd;/мес";?>
 		<template v-if="currentStep==0">
 			<input type="radio" 
-					name="plan_step0" 
+					name="plan_group_radio" 
 					id="plangroup_<?=$plan_group_key?>" 
 					forheader="<?=$plan_group->title;?>" 
 					value="<?=$plan_group_key?>" 
@@ -52,9 +45,16 @@ function render_plans($plans) {	//создаёт размеку для тари�
 		<template v-if="currentStep && currentGroup==<?=$plan_group_key?>">
 		<?php
 		foreach ($plan_group->tarifs as $plan_ind => $plan) :
-			$month_price = $plan->price / $plan->pay_period;?>
+			$month_price = $plan->price / $plan->pay_period;
+			
+			$timestamp = substr($plan->new_payday, 0, -5);
+			$timezone_offset = substr($plan->new_payday,-5);
+			$date = date_create("@{$timestamp}"); //не получится передать TZ сразу, если используется timestamp
+			date_timezone_set($date, timezone_open($timezone_offset));
+			//var_dump($date);
+			$date_string = date_format($date, 'd.m.Y');?>
 			<template v-if="currentStep==1">
-				<input type="radio" name="plan_step1" id="plan_<?=$plan_ind;?>" value="<?=$plan->ID;?>" v-on:click="openPlan">
+				<input type="radio" name="plan_radio" id="plan_<?=$plan_ind;?>" value="<?=$plan->ID;?>" v-on:click="openPlan">
 				<label for="plan_<?=$plan_ind;?>" class="step1">
 					<h1><?=$plan->pay_period.' месяц'.right_month_ending($plan->pay_period);?></h1>
 					<div>
@@ -73,7 +73,7 @@ function render_plans($plans) {	//создаёт размеку для тари�
 					<span class="total_price">разовый платёж &#8211; <?=$plan->price;?> &#x20bd;
 						<br>со счёта спишется &#8211; <?=$plan->price;?> &#x20bd;</span>
 					<span class="dates">вступит в силу &#8211; сегодня
-						<br>активно до &#8211; 21.10.2017</span>
+						<br>активно до &#8211; <?=$date_string?></span>
 				</div>
 			</label>
 		<?php endforeach;?>
