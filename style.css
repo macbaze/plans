@@ -50,6 +50,7 @@ body {
 .plans header button {
 	display: block;
     position: absolute;
+    overflow: hidden;
     top: 0;
     bottom: 0;
     left: 0;
@@ -101,6 +102,7 @@ label.step1 {
 	flex-direction: column;
 	position: relative;
 	padding-top: 10pt;
+	overflow: hidden;
 }
 .step0 > div:after,
 .step1 > div:after {
@@ -143,15 +145,6 @@ label.step1 {
 .price {
     font-size: 110%;
 }
-.step1 .price {
-	font-weight: bold;
-}
-.total_price,
-.discount {
-	font-size: 90%;
-	padding-top: 0;
-	padding-bottom: 0;
-}
 .step0 span:last-of-type {
     padding-left: 0;
     margin-right: 0;
@@ -165,7 +158,18 @@ label.step1 {
     padding: 20pt;
     font-size: 95%;
 }
-
+.step1 .price {
+	font-weight: bold;
+}
+span.total_price,
+span.discount {
+	font-size: 90%;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+.step1 span:last-of-type {
+	padding-bottom: 10pt;
+}
 
 @media (min-width: 540pt) {
 	.plans {
