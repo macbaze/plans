@@ -136,15 +136,15 @@ label span {
 .speed {
     font-weight: bold;
 }
-.speed[forcolor^="Земля"] {
+input[forheader^="Земля"] + label .speed {
     color: #fff;
     background-color: #70603e;
 }
-.speed[forcolor^="Вода"] {
+input[forheader^="Вода"] + label .speed {
     color: #fff;
     background-color: #0075d9;
 }
-.speed[forcolor^="Огонь"] {
+input[forheader^="Огонь"] + label .speed {
     color: #fff;
     background-color: #e74807;
 }

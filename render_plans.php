@@ -37,7 +37,7 @@ function render_plans($plans) //создаёт размеку для тариф�
             <label for="plangroup_<?= $plan_group_key ?>" class="step0">
                 <h1>Тариф "<?= $plan_group->title; ?>"</h1>
                 <div>
-                    <span class="speed" forcolor="<?= $plan_group->title; ?>"><?= $plan_group->speed; ?> Мбит/с</span>
+                    <span class="speed"><?= $plan_group->speed; ?> Мбит/с</span>
                     <span class="price"><?= $price_string; ?></span>
                     <?php
         if (isset($plan_group->free_options))
