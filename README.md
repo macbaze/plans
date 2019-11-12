@@ -1,2 +1,1 @@
-# plans
- interface for plans JSON
+Описание задания - https://www.sknt.ru/job/frontend/
